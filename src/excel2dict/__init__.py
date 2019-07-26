@@ -4,6 +4,9 @@ import xlrd
 
 from . import converter, helper
 
+VERSION = (0, 0, 3)
+
+__version__ = '.'.join([str(x) for x in VERSION])
 
 def to_dict(file_path, configuration: dict = None):
     if not configuration:

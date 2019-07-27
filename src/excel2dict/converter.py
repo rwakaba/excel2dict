@@ -131,8 +131,8 @@ class Value:
 def main():
     args = helper.parse_args()
     definition = None
-    if args.definition:
-        definition = load_sheet_definition(args.definition)
+    if args.sheet_definition:
+        definition = load_sheet_definition(args.sheet_definition)
     else:
         import os
         f = f'{os.path.dirname(args.target_file)}/sheet_definition.yaml'

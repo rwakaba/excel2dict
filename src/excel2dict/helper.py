@@ -8,7 +8,7 @@ from . import serial_value_handler
 def parse_args():
     parser = argparse.ArgumentParser("excel2dict")
     parser.add_argument('target_file', type=str, help="target excel file")
-    parser.add_argument('--definition', type=str, help="path to sheet definition file")
+    parser.add_argument('-s', '--sheet-definition', type=str, help="path to sheet definition file")
     return parser.parse_args()
 
 

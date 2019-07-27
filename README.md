@@ -54,8 +54,7 @@ As well, you can do the same thing in python script.
 ## Using Sheet Definition
 As above example, at simple usage, some data representing dedicated data type(boolean, date, etc) in excel can not be handled usefully.
 
-For this use case, you use a sheet definition file.
-if exists, excel2dict load a definition file named `sheet_definition.yaml` from the directory in which target excel file is saved. 
+For this use case, you use a sheet definition file. if exists, excel2dict load a definition file named `sheet_definition.yaml` from the directory which a target excel file is saved in or optional argument specified to by `-s`.
 
 ### sample definition
 ```

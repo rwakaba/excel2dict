@@ -37,14 +37,13 @@ def read_sheet(sheet, sheet_definition: SheetDefinition = None):
         d = {}
         for col_num in range(len(header)):
             col_name = header[col_num]
-            schema = None
             if sheet_definition:
                 col_def: ColDefinition = sheet_definition.get_col_definition(col_name)
-                col_name = col_def.name
-                schema = col_def.schema
+            else:
+                col_def: ColDefinition = ColDefinition({'name': col_name})
 
             v = row_values[col_num]
-            d[col_name] = Value(v, schema)
+            d[col_def.name] = Value(v, col_def.schema)
         arr.append(d);
     return arr
 
@@ -134,8 +133,14 @@ def main():
     definition = None
     if args.definition:
         definition = load_sheet_definition(args.definition)
+    else:
+        import os
+        f = f'{os.path.dirname(args.target_file)}/sheet_definition.yaml'
+        if os.path.exists(f):
+            definition = load_sheet_definition(f)
+
     ret = to_dict(args.target_file, definition, True)
-    print(json.dumps(ret['Sheet1'], indent=2, ensure_ascii=False))
+    print(json.dumps(ret, indent=2, ensure_ascii=False))
 
 
 if __name__ == '__main__':

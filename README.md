@@ -9,7 +9,7 @@ pip install excel2dict
 
 ## Quick Over View
 
-Assuming below sample data is saved as excel file named Book.xslx.
+Assuming below sample data was saved as excel file named Book.xslx.
 
 |foo|bar|
 |--|--|
@@ -55,7 +55,7 @@ As well, you can do the same thing in python script.
 As above example, at simple usage, some data representing dedicated data type(boolean, date, etc) in excel can not be handled usefully.
 
 For this use case, you use a sheet definition file.
-if exists, excel2dict load a definition file named `excel2dict.yaml` from the current directory. 
+if exists, excel2dict load a definition file named `sheet_definition.yaml` from the directory in which target excel file is saved. 
 
 ### sample definition
 ```

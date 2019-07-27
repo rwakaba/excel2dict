@@ -128,10 +128,15 @@ class Value:
     def __repr__(self):
         return f'<Value raw={self.raw}, expanded={self._value} />'
 
-if __name__ == '__main__':
+
+def main():
     args = helper.parse_args()
     definition = None
     if args.definition:
         definition = load_sheet_definition(args.definition)
     ret = to_dict(args.target_file, definition, True)
     print(json.dumps(ret['Sheet1'], indent=2, ensure_ascii=False))
+
+
+if __name__ == '__main__':
+    main()

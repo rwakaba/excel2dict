@@ -132,36 +132,59 @@ For rare use case, you may need to convert values defined in other sheets as nes
 
 For example, assuming there were 2 sheets as below,  
 
-#### SheetB
-|Access Right|Read|Write|
-|--|--|--|
-|Admin|O|O|
-|General|O|X|
-
-#### SheetA
+#### Sheet1
 |User|Access Right|
 |--|--|
 |Scott|Admin|
 |Tom|General|
 
+#### Sheet2
+|Access Right|Read|Write|
+|--|--|--|
+|Admin|O|O|
+|General|O|X|
+
+#### Sheet Definition
+On Sheet1 setting, specify `type` with `ref` and `sheet` with reference sheet name.
+
+```
+sheets:
+- name: Sheet1
+  columns:
+    - name: user
+      label: User
+      schema:
+        type: int
+    - name: access_right
+      label: Access Right
+      schema:
+        type: ref
+        sheet: Sheet2
+- name: Sheet2
+  columns:
+    - name: ref_name
+      label: Access Right
+```
+
+#### Output
 You can get an output like below format defining as `ref` type.
 ```
 [
-  {
-    "user": 'Scott',
-    "group": {
-      'read': 'O',
-      'write': 'O'
-    } 
-  },
-  {
-    "user": 'Tom',
-    "group": {
-      'read': 'O',
-      'write': 'X'
-    } 
-  }
-]
+    {
+      "user": "Scott",
+      "access_right": {
+        "Read": "O",
+        "Write": "O"
+      }
+    },
+    {
+      "user": "Tom",
+      "access_right": {
+        "Read": "O",
+        "Write": "X"
+      }
+    }
+  ]
 ```
 
 ## How to specify

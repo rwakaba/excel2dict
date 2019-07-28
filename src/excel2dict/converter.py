@@ -140,7 +140,10 @@ def main():
             definition = load_sheet_definition(f)
 
     ret = to_dict(args.target_file, definition, True)
-    print(json.dumps(ret, indent=2, ensure_ascii=False))
+    if args.pretty_print:
+        print(json.dumps(ret, indent=2, ensure_ascii=False))
+    else:
+        print(json.dumps(ret))
 
 
 if __name__ == '__main__':

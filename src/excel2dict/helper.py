@@ -9,6 +9,7 @@ def parse_args():
     parser = argparse.ArgumentParser("excel2dict")
     parser.add_argument('target_file', type=str, help="target excel file")
     parser.add_argument('-s', '--sheet-definition', type=str, help="path to sheet definition file")
+    parser.add_argument('-p', '--pretty-print', action='store_true', help="out with pretty printing")
     return parser.parse_args()
 
 

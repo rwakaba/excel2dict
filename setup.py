@@ -19,6 +19,14 @@ VERSION = get_version(eval(version_line.split('=')[-1]))
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
+def strip_comments(l):
+    return l.split('#', 1)[0].strip()
+
+def reqs(*f):
+    return list(filter(None, [strip_comments(l) for l in open(
+        os.path.join(os.getcwd(), *f)).readlines()]))
+
+
 setuptools.setup(
     name="excel2dict",
     version=VERSION,
@@ -30,6 +38,7 @@ setuptools.setup(
     url="https://github.com/rwakaba/excel2dict",
     package_dir={'': 'src'},
     packages=setuptools.find_packages('src'),
+    install_requires=reqs('requirements.txt'),
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",

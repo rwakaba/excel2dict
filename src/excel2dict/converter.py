@@ -138,12 +138,11 @@ def main():
         f = f'{os.path.dirname(args.target_file)}/sheet_definition.yaml'
         if os.path.exists(f):
             definition = load_sheet_definition(f)
-
     ret = to_dict(args.target_file, definition, True)
-    if args.pretty_print:
-        print(json.dumps(ret, indent=2, ensure_ascii=False))
+    if args.compact_output:
+        print(json.dumps(ret, ensure_ascii=args.ascii_output))
     else:
-        print(json.dumps(ret))
+        print(json.dumps(ret, indent=args.indent, ensure_ascii=args.ascii_output))
 
 
 if __name__ == '__main__':

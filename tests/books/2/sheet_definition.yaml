@@ -1,0 +1,67 @@
+sheets:
+- name: Sheet1
+  label: サンプルシード１
+  columns: 
+    - name: a
+      label: 列A
+      schema:
+        type: int
+    - name: b
+      label: 列B
+      schema:
+        type: str
+    - name: c
+      label: 列C
+      schema:
+        type: bool
+    - name: d
+      label: 列D
+      schema:
+        type: date
+    - name: e
+      label: 列E
+      schema:
+        type: datetime
+        offset: 9
+    - name: f
+      label: 列F
+      schema:
+        type: ref
+        sheet: Sheet2
+        is_array: true
+    - name: g
+      label: 列G
+      schema:
+        type: ref
+        sheet: Sheet2
+- name: Sheet2
+  label: サンプルシード２
+  columns: 
+    - name: ref_name
+      label: 参照名
+    - name: b
+      label: 列B
+      schema:
+        type: int
+    - name: c
+      label: 列C
+      schema:
+        type: str
+    - name: d
+      label: 列D
+      schema:
+        type: ref
+        sheet: Sheet3
+- name: Sheet3
+  label: サンプルシード３
+  columns: 
+    - name: ref_name
+      label: 参照名
+    - name: b
+      label: 列B
+      schema:
+        type: int
+    - name: c
+      label: 列C
+      schema:
+        type: str

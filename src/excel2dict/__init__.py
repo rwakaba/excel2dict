@@ -5,7 +5,7 @@ import xlrd
 from excel2dict import converter
 from excel2dict.sheets_definition import load_sheet_definition
 
-VERSION = (0, 0, 1)
+VERSION = (0, 0, 2)
 
 __version__ = '.'.join([str(x) for x in VERSION])
 

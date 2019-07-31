@@ -1,0 +1,26 @@
+sheets:
+- name: Sheet1
+  columns: 
+    - name: a
+      schema:
+        type: date
+        format: "%Y/%m/%d"
+    - name: b
+      schema:
+        type: datetime
+        offset: 9
+        format: "%Y/%m/%d %H:%M"
+    - name: c
+      schema:
+        type: datetime
+        offset: 9
+        format: "%Y/%m/%d %H:%M:%S"
+    - name: d
+      schema:
+        type: datetime
+        offset: 9
+        format: "%Y/%m/%d %H:%M:%S.%f"
+    - name: e
+      schema:
+        type: datetime
+        offset: 9

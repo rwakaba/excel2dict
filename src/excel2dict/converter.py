@@ -1,7 +1,7 @@
 import json
 import xlrd
 
-from excel2dict import helper
+from excel2dict import helper, formatter
 from excel2dict.sheets_definition import (
     load_sheet_definition,
     get_defenition,
@@ -87,7 +87,7 @@ class Value:
         if self.schema.is_ref:
             self._value = self._expand(parsed_all_sheets, jsonify)
         else:
-            self._value = helper.format(self.raw, self.schema.source, jsonify)
+            self._value = formatter.format(self.raw, self.schema.source, jsonify)
         return self._value
 
     def _expand(self, parsed_all_sheets: dict, jsonify: bool = False) -> any:
